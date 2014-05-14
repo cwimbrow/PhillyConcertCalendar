@@ -1,14 +1,29 @@
+// PHLMasterViewController.m
 //
-//  PHLMasterViewController.m
-//  PhillyConcertCalendar
+// Copyright (c) 2014 Chris Wimbrow
 //
-//  Created by Christopher Wimbrow on 5/14/14.
-//  Copyright (c) 2014 Christopher Wimbrow. All rights reserved.
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
 #import "PHLMasterViewController.h"
-
 #import "PHLDetailViewController.h"
+#import "PHLScraper.h"
+#import "PHLCalendarEvent.h"
 
 @interface PHLMasterViewController () {
     NSMutableArray *_objects;
@@ -16,6 +31,14 @@
 @end
 
 @implementation PHLMasterViewController
+
+- (void)loadCalendarEvents
+{
+    PHLScraper *scraper = [[PHLScraper alloc] init];
+    _objects = [scraper getConcertData];
+    
+    [self.tableView reloadData];
+}
 
 - (void)awakeFromNib
 {
@@ -25,11 +48,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadCalendarEvents];
 	// Do any additional setup after loading the view, typically from a nib.
+    /*
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +75,23 @@
 }
 
 #pragma mark - Table View
+- (NSMutableAttributedString *)makeBold:(NSString *)string
+                        withRegularPart:(NSString *)nonBoldString
+{
+    const CGFloat fontSize = 13;
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+    UIColor *foregroundColor = [UIColor whiteColor];
+    
+    NSDictionary *attrs = @{boldFont: NSFontAttributeName,
+                            foregroundColor: NSForegroundColorAttributeName};
+    const NSRange range = NSMakeRange(0, string.length);
+    NSString *fullString = [string stringByAppendingString:nonBoldString];
+    NSMutableAttributedString *attributedText =
+    [[NSMutableAttributedString alloc] initWithString:fullString];
+    [attributedText setAttributes:attrs range:range];
+    
+    return attributedText;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -64,15 +107,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    PHLCalendarEvent *event = _objects[indexPath.row];
+    
+    cell.textLabel.text = event.headLiner;
+    cell.detailTextLabel.text = event.showDate;
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath

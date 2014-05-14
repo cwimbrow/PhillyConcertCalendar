@@ -1,4 +1,4 @@
-// PHLMasterViewController.h
+// PHLParser.h
 //
 // Copyright (c) 2014 Chris Wimbrow
 //
@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface PHLMasterViewController : UITableViewController
-
+@interface PHLScraper : NSObject
+- (NSMutableArray *)getConcertData;
 @end

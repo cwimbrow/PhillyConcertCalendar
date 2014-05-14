@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C456DD7D502409296AB55B2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E79D825B835C46028BA03C24 /* libPods.a */; };
 		AF43036B192346BD0072C943 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF43036A192346BD0072C943 /* Foundation.framework */; };
 		AF43036D192346BD0072C943 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF43036C192346BD0072C943 /* CoreGraphics.framework */; };
 		AF43036F192346BD0072C943 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF43036E192346BD0072C943 /* UIKit.framework */; };
@@ -22,6 +23,8 @@
 		AF43038F192346BD0072C943 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF43036E192346BD0072C943 /* UIKit.framework */; };
 		AF430397192346BD0072C943 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF430395192346BD0072C943 /* InfoPlist.strings */; };
 		AF430399192346BD0072C943 /* PhillyConcertCalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF430398192346BD0072C943 /* PhillyConcertCalendarTests.m */; };
+		AF4303AB19234B610072C943 /* PHLCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4303AA19234B610072C943 /* PHLCalendarEvent.m */; };
+		AF4303AE19234B6B0072C943 /* PHLScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4303AD19234B6B0072C943 /* PHLScraper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A8C9EC56F2C4E1FA0A51773 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AF430367192346BD0072C943 /* PhillyConcertCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhillyConcertCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF43036A192346BD0072C943 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AF43036C192346BD0072C943 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +60,11 @@
 		AF430394192346BD0072C943 /* PhillyConcertCalendarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhillyConcertCalendarTests-Info.plist"; sourceTree = "<group>"; };
 		AF430396192346BD0072C943 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AF430398192346BD0072C943 /* PhillyConcertCalendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhillyConcertCalendarTests.m; sourceTree = "<group>"; };
+		AF4303A919234B610072C943 /* PHLCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHLCalendarEvent.h; sourceTree = "<group>"; };
+		AF4303AA19234B610072C943 /* PHLCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLCalendarEvent.m; sourceTree = "<group>"; };
+		AF4303AC19234B6B0072C943 /* PHLScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHLScraper.h; sourceTree = "<group>"; };
+		AF4303AD19234B6B0072C943 /* PHLScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLScraper.m; sourceTree = "<group>"; };
+		E79D825B835C46028BA03C24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +75,7 @@
 				AF43036D192346BD0072C943 /* CoreGraphics.framework in Frameworks */,
 				AF43036F192346BD0072C943 /* UIKit.framework in Frameworks */,
 				AF43036B192346BD0072C943 /* Foundation.framework in Frameworks */,
+				8C456DD7D502409296AB55B2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +99,7 @@
 				AF430392192346BD0072C943 /* PhillyConcertCalendarTests */,
 				AF430369192346BD0072C943 /* Frameworks */,
 				AF430368192346BD0072C943 /* Products */,
+				5A8C9EC56F2C4E1FA0A51773 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +119,7 @@
 				AF43036C192346BD0072C943 /* CoreGraphics.framework */,
 				AF43036E192346BD0072C943 /* UIKit.framework */,
 				AF43038C192346BD0072C943 /* XCTest.framework */,
+				E79D825B835C46028BA03C24 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,28 +127,10 @@
 		AF430370192346BD0072C943 /* PhillyConcertCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				AF430379192346BD0072C943 /* PHLAppDelegate.h */,
-				AF43037A192346BD0072C943 /* PHLAppDelegate.m */,
-				AF43037C192346BD0072C943 /* Main.storyboard */,
-				AF43037F192346BD0072C943 /* PHLMasterViewController.h */,
-				AF430380192346BD0072C943 /* PHLMasterViewController.m */,
-				AF430382192346BD0072C943 /* PHLDetailViewController.h */,
-				AF430383192346BD0072C943 /* PHLDetailViewController.m */,
-				AF430385192346BD0072C943 /* Images.xcassets */,
-				AF430371192346BD0072C943 /* Supporting Files */,
+				AF4303B019234BD10072C943 /* Source */,
+				AF4303AF19234BB00072C943 /* Resources */,
 			);
 			path = PhillyConcertCalendar;
-			sourceTree = "<group>";
-		};
-		AF430371192346BD0072C943 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				AF430372192346BD0072C943 /* PhillyConcertCalendar-Info.plist */,
-				AF430373192346BD0072C943 /* InfoPlist.strings */,
-				AF430376192346BD0072C943 /* main.m */,
-				AF430378192346BD0072C943 /* PhillyConcertCalendar-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		AF430392192346BD0072C943 /* PhillyConcertCalendarTests */ = {
@@ -157,6 +151,68 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AF4303A219234AB10072C943 /* Scraper */ = {
+			isa = PBXGroup;
+			children = (
+				AF4303AC19234B6B0072C943 /* PHLScraper.h */,
+				AF4303AD19234B6B0072C943 /* PHLScraper.m */,
+			);
+			name = Scraper;
+			sourceTree = "<group>";
+		};
+		AF4303A319234AB90072C943 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF4303A919234B610072C943 /* PHLCalendarEvent.h */,
+				AF4303AA19234B610072C943 /* PHLCalendarEvent.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AF4303A419234AC20072C943 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AF43037F192346BD0072C943 /* PHLMasterViewController.h */,
+				AF430380192346BD0072C943 /* PHLMasterViewController.m */,
+				AF430382192346BD0072C943 /* PHLDetailViewController.h */,
+				AF430383192346BD0072C943 /* PHLDetailViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		AF4303A819234B470072C943 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AF430376192346BD0072C943 /* main.m */,
+				AF430378192346BD0072C943 /* PhillyConcertCalendar-Prefix.pch */,
+				AF430379192346BD0072C943 /* PHLAppDelegate.h */,
+				AF43037A192346BD0072C943 /* PHLAppDelegate.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		AF4303AF19234BB00072C943 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF430372192346BD0072C943 /* PhillyConcertCalendar-Info.plist */,
+				AF430373192346BD0072C943 /* InfoPlist.strings */,
+				AF43037C192346BD0072C943 /* Main.storyboard */,
+				AF430385192346BD0072C943 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AF4303B019234BD10072C943 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AF4303A819234B470072C943 /* Main */,
+				AF4303A419234AC20072C943 /* UI */,
+				AF4303A319234AB90072C943 /* Models */,
+				AF4303A219234AB10072C943 /* Scraper */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +220,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF43039C192346BD0072C943 /* Build configuration list for PBXNativeTarget "PhillyConcertCalendar" */;
 			buildPhases = (
+				F751D9BC082344E5905F0216 /* Check Pods Manifest.lock */,
 				AF430363192346BD0072C943 /* Sources */,
 				AF430364192346BD0072C943 /* Frameworks */,
 				AF430365192346BD0072C943 /* Resources */,
+				99316631A91E4D63ADD2CA3B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +308,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		99316631A91E4D63ADD2CA3B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F751D9BC082344E5905F0216 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AF430363192346BD0072C943 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,6 +349,8 @@
 				AF430377192346BD0072C943 /* main.m in Sources */,
 				AF43037B192346BD0072C943 /* PHLAppDelegate.m in Sources */,
 				AF430384192346BD0072C943 /* PHLDetailViewController.m in Sources */,
+				AF4303AE19234B6B0072C943 /* PHLScraper.m in Sources */,
+				AF4303AB19234B610072C943 /* PHLCalendarEvent.m in Sources */,
 				AF430381192346BD0072C943 /* PHLMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +473,7 @@
 		};
 		AF43039D192346BD0072C943 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A8C9EC56F2C4E1FA0A51773 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -393,6 +487,7 @@
 		};
 		AF43039E192346BD0072C943 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A8C9EC56F2C4E1FA0A51773 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -463,6 +558,7 @@
 				AF43039E192346BD0072C943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AF43039F192346BD0072C943 /* Build configuration list for PBXNativeTarget "PhillyConcertCalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +567,7 @@
 				AF4303A1192346BD0072C943 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
