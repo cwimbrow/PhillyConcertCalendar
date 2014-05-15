@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bandsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITextView *dateTextView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ticketUrlTextView;
 @property (weak, nonatomic) IBOutlet UILabel *saleDateLabel;
 @end

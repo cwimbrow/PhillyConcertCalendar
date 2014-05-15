@@ -109,8 +109,13 @@
 
     PHLCalendarEvent *event = _objects[indexPath.row];
     
-    cell.textLabel.text = event.headLiner;
-    cell.detailTextLabel.text = event.showDate;
+    if (event.openers) {
+        cell.textLabel.text = [event.headLiner stringByAppendingString:event.openers];
+    } else {
+        cell.textLabel.text = event.headLiner;
+    }
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ @ %@", event.showDate, event.venue];
     return cell;
 }
 

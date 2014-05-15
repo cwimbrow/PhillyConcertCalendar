@@ -48,7 +48,7 @@
     if (self.detailItem) {
         self.bandsLabel.text = [self.detailItem headLiner];
         self.venueLabel.text = [self.detailItem venue];
-        self.dateTextView.text = [self.detailItem showDate];
+        self.dateLabel.text = [self.detailItem showDate];
         self.priceLabel.text = [self.detailItem price];
         self.ticketUrlTextView.text = [[self.detailItem tixURL] absoluteString];
         self.saleDateLabel.text = [self.detailItem saleDate];
