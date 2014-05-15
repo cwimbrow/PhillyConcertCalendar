@@ -34,17 +34,14 @@
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
+        _detailItem = (PHLCalendarEvent *)newDetailItem;
+
         [self configureView];
     }
 }
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
     if (self.detailItem) {
         self.bandsLabel.text = [self.detailItem headLiner];
         self.venueLabel.text = [self.detailItem venue];

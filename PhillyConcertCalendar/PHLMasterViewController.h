@@ -23,5 +23,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PHLMasterViewController : UITableViewController
-
+//@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 @end

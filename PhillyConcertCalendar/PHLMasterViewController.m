@@ -36,8 +36,6 @@
 {
     PHLScraper *scraper = [[PHLScraper alloc] init];
     _objects = [scraper getConcertData];
-    
-    [self.tableView reloadData];
 }
 
 - (void)awakeFromNib
@@ -48,20 +46,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadCalendarEvents];
-	// Do any additional setup after loading the view, typically from a nib.
-    /*
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-     */
+    UIActivityIndicatorView *indicatorView =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:indicatorView];
+    indicatorView.center = self.view.center;
+    indicatorView.hidesWhenStopped = YES;
+    indicatorView.hidden = NO;
+    [indicatorView startAnimating];
+    dispatch_queue_t scraperQueue = dispatch_queue_create("scraper", NULL);
+    dispatch_async(scraperQueue, ^{
+        [self loadCalendarEvents];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [indicatorView stopAnimating];
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)insertNewObject:(id)sender
@@ -121,7 +125,6 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return NO;
 }
 
@@ -135,27 +138,11 @@
     }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        PHLCalendarEvent *object = _objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
