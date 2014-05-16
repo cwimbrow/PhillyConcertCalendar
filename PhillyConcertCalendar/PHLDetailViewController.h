@@ -26,10 +26,12 @@
 
 @property (strong, nonatomic) PHLCalendarEvent *detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *bandsLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *bandsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *venueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *ticketUrlTextView;
 @property (weak, nonatomic) IBOutlet UILabel *saleDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *showAges;
+@property (weak, nonatomic) IBOutlet UITextView *bandText;
 @end

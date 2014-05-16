@@ -26,7 +26,7 @@
 #import "PHLCalendarEvent.h"
 
 @interface PHLMasterViewController () {
-    NSMutableArray *_objects;
+    NSMutableArray *_calendarEvents;
 }
 @end
 
@@ -35,7 +35,7 @@
 - (void)loadCalendarEvents
 {
     PHLScraper *scraper = [[PHLScraper alloc] init];
-    _objects = [scraper getConcertData];
+    _calendarEvents = [scraper getConcertData];
 }
 
 - (void)awakeFromNib
@@ -70,10 +70,10 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!_calendarEvents) {
+        _calendarEvents = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    [_calendarEvents insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -104,14 +104,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _calendarEvents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    PHLCalendarEvent *event = _objects[indexPath.row];
+    PHLCalendarEvent *event = _calendarEvents[indexPath.row];
     
     if (event.openers) {
         cell.textLabel.text = [event.headLiner stringByAppendingString:event.openers];
@@ -131,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [_calendarEvents removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -142,7 +142,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        PHLCalendarEvent *object = _objects[indexPath.row];
+        PHLCalendarEvent *object = _calendarEvents[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
