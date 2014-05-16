@@ -34,24 +34,45 @@
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
+        _detailItem = (PHLCalendarEvent *)newDetailItem;
+
         [self configureView];
     }
 }
 
 - (void)configureView
 {
-    // Update the user interface for the detail item.
-
+    
+    
     if (self.detailItem) {
-        self.bandsLabel.text = [self.detailItem headLiner];
-        self.venueLabel.text = [self.detailItem venue];
-        self.dateTextView.text = [self.detailItem showDate];
-        self.priceLabel.text = [self.detailItem price];
-        self.ticketUrlTextView.text = [[self.detailItem tixURL] absoluteString];
-        self.saleDateLabel.text = [self.detailItem saleDate];
+        // TODO: maybe add as part of autoresizing UITextView subclass
+        // Removes internal padding so the text lines up with the UILabels
+        self.bandText.textContainer.lineFragmentPadding = 0;
+        self.ticketUrlTextView.textContainer.lineFragmentPadding = 0;
+        
+        // testing textview for bands
+        if (self.detailItem.openers) {
+            self.bandText.text =
+            [self.detailItem.headLiner
+             stringByAppendingString:self.detailItem.openers];
+        } else {
+            self.bandText.text = self.detailItem.headLiner;
+        }
+        
+
+        [self.bandText sizeToFit];
+        [self.bandText layoutIfNeeded];
+        self.venueLabel.text = self.detailItem.venue;
+        self.dateLabel.text = [NSString stringWithFormat:@"Event date: %@",
+                               self.detailItem.showDate];
+        self.priceLabel.text = [NSString stringWithFormat:@"Price: %@",
+                                self.detailItem.price];
+        self.ticketUrlTextView.text = [self.detailItem.tixURL absoluteString];
+        self.saleDateLabel.text =
+        [NSString stringWithFormat:@"Tickets available: %@",
+         self.detailItem.saleDate];
+        self.showAges.text = [NSString stringWithFormat:@"Ages: %@",
+                              self.detailItem.showAges];
     }
 }
 
@@ -59,6 +80,7 @@
 {
     [super viewDidLoad];
     [self configureView];
+    [self.view setNeedsLayout];
 }
 
 - (void)didReceiveMemoryWarning
