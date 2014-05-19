@@ -23,5 +23,12 @@
 #import "PHLCalendarEvent.h"
 
 @implementation PHLCalendarEvent
-
+- (NSString *)bands
+{
+    if (self.openers) {
+        return [self.headLiner stringByAppendingString:self.openers];
+    } else {
+        return self.headLiner;
+    }
+}
 @end

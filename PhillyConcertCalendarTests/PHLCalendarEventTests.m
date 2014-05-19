@@ -1,4 +1,4 @@
-// PhillyConcertCalendarTests.m
+// PHLCalendarEventTests.m
 //
 // Copyright (c) 2014 Chris Wimbrow
 //
@@ -21,28 +21,37 @@
 // SOFTWARE.
 
 #import <XCTest/XCTest.h>
+#import "PHLCalendarEvent.h"
 
-@interface PhillyConcertCalendarTests : XCTestCase
+@interface PHLCalendarEventTests : XCTestCase
 
 @end
 
-@implementation PhillyConcertCalendarTests
+@implementation PHLCalendarEventTests
 
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testCalendarEventBandsWithHeadlinersOnly
 {
-    //XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    PHLCalendarEvent *event = [[PHLCalendarEvent alloc] init];
+    event.headLiner = @"Test band";
+    XCTAssertEqualObjects(event.headLiner, [event bands], @"Bands should equal headliner");
+}
+
+- (void)testCalendarEventBandsWithHeadlinersAndOpeners
+{
+    PHLCalendarEvent *event = [[PHLCalendarEvent alloc] init];
+    event.headLiner = @"Test band";
+    event.openers = @" / Test opener";
+    XCTAssertEqualObjects(@"Test band / Test opener", [event bands], @"Expected headliner and openers");
 }
 
 @end

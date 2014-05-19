@@ -50,16 +50,7 @@
         self.bandText.textContainer.lineFragmentPadding = 0;
         self.ticketUrlTextView.textContainer.lineFragmentPadding = 0;
         
-        // testing textview for bands
-        if (self.detailItem.openers) {
-            self.bandText.text =
-            [self.detailItem.headLiner
-             stringByAppendingString:self.detailItem.openers];
-        } else {
-            self.bandText.text = self.detailItem.headLiner;
-        }
-        
-
+        self.bandText.text = [self.detailItem bands];
         [self.bandText sizeToFit];
         [self.bandText layoutIfNeeded];
         self.venueLabel.text = self.detailItem.venue;

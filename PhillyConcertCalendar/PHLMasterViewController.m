@@ -112,13 +112,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     PHLCalendarEvent *event = _calendarEvents[indexPath.row];
-    
-    if (event.openers) {
-        cell.textLabel.text = [event.headLiner stringByAppendingString:event.openers];
-    } else {
-        cell.textLabel.text = event.headLiner;
-    }
-    
+    cell.textLabel.text = [event bands];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ @ %@", event.showDate, event.venue];
     return cell;
 }

@@ -33,4 +33,6 @@
 @property (nonatomic, strong) NSURL *tixURL;
 @property (nonatomic, strong) NSString *showAges;
 @property (nonatomic, strong) NSString *region;
+
+- (NSString *)bands;
 @end
