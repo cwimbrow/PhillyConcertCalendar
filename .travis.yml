@@ -1,0 +1,14 @@
+language: objective-c
+xcode_workspace: PhillyConcertCalendar.xcworkspace
+xcode_scheme: PhillyConcertCalendar
+xcode_sdk:
+  - iphonesimulator7.0
+  - iphonesimulator7.1
+install: gem install cocoapods -v 0.32.1 --no-rdoc --no-ri
+before_script:
+  - export LANG=en_US.UTF-8
+  - brew unlink xctool
+  - brew update
+  - brew install xctool
+  - pod install
+
