@@ -20,6 +20,20 @@
                ReferencedContainer = "container:PhillyConcertCalendar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF43038A192346BD0072C943"
+               BuildableName = "PhillyConcertCalendarTests.xctest"
+               BlueprintName = "PhillyConcertCalendarTests"
+               ReferencedContainer = "container:PhillyConcertCalendar.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
