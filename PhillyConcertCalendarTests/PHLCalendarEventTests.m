@@ -1,4 +1,4 @@
-// PHLCalendarEvent.m
+// PHLCalendarEventTests.m
 //
 // Copyright (c) 2014 Chris Wimbrow
 //
@@ -20,15 +20,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#import <XCTest/XCTest.h>
 #import "PHLCalendarEvent.h"
 
-@implementation PHLCalendarEvent
-- (NSString *)bands
+@interface PHLCalendarEventTests : XCTestCase
+
+@end
+
+@implementation PHLCalendarEventTests
+
+- (void)setUp
 {
-    if (self.openers) {
-        return [self.headLiner stringByAppendingString:self.openers];
-    } else {
-        return self.headLiner;
-    }
+    [super setUp];
 }
+
+- (void)tearDown
+{
+    [super tearDown];
+}
+
+- (void)testCalendarEventBandsWithHeadlinersOnly
+{
+    PHLCalendarEvent *event = [[PHLCalendarEvent alloc] init];
+    event.headLiner = @"Test band";
+    XCTAssertEqualObjects(event.headLiner, [event bands], @"Bands should equal headliner");
+}
+
+- (void)testCalendarEventBandsWithHeadlinersAndOpeners
+{
+    PHLCalendarEvent *event = [[PHLCalendarEvent alloc] init];
+    event.headLiner = @"Test band";
+    event.openers = @" / Test opener";
+    XCTAssertEqualObjects(@"Test band / Test opener", [event bands], @"Expected headliner and openers");
+}
+
 @end

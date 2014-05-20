@@ -25,6 +25,8 @@
 		AF430399192346BD0072C943 /* PhillyConcertCalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF430398192346BD0072C943 /* PhillyConcertCalendarTests.m */; };
 		AF4303AB19234B610072C943 /* PHLCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4303AA19234B610072C943 /* PHLCalendarEvent.m */; };
 		AF4303AE19234B6B0072C943 /* PHLScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4303AD19234B6B0072C943 /* PHLScraper.m */; };
+		AFF2F1AF19273AB200B98536 /* PHLCalendarEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF2F1AE19273AB200B98536 /* PHLCalendarEventTests.m */; };
+		AFF2F1B11927404A00B98536 /* PHLScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF2F1B01927404A00B98536 /* PHLScraperTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		AF4303AA19234B610072C943 /* PHLCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLCalendarEvent.m; sourceTree = "<group>"; };
 		AF4303AC19234B6B0072C943 /* PHLScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHLScraper.h; sourceTree = "<group>"; };
 		AF4303AD19234B6B0072C943 /* PHLScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLScraper.m; sourceTree = "<group>"; };
+		AFF2F1AE19273AB200B98536 /* PHLCalendarEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLCalendarEventTests.m; sourceTree = "<group>"; };
+		AFF2F1B01927404A00B98536 /* PHLScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHLScraperTests.m; sourceTree = "<group>"; };
 		E79D825B835C46028BA03C24 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				AF430398192346BD0072C943 /* PhillyConcertCalendarTests.m */,
+				AFF2F1AE19273AB200B98536 /* PHLCalendarEventTests.m */,
+				AFF2F1B01927404A00B98536 /* PHLScraperTests.m */,
 				AF430393192346BD0072C943 /* Supporting Files */,
 			);
 			path = PhillyConcertCalendarTests;
@@ -360,6 +366,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF430399192346BD0072C943 /* PhillyConcertCalendarTests.m in Sources */,
+				AFF2F1AF19273AB200B98536 /* PHLCalendarEventTests.m in Sources */,
+				AFF2F1B11927404A00B98536 /* PHLScraperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

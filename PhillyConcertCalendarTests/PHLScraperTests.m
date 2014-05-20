@@ -1,4 +1,4 @@
-// PHLCalendarEvent.m
+// PHLScraperTests.m
 //
 // Copyright (c) 2014 Chris Wimbrow
 //
@@ -20,15 +20,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#import "PHLCalendarEvent.h"
+#import <XCTest/XCTest.h>
 
-@implementation PHLCalendarEvent
-- (NSString *)bands
+@interface PHLScraperTests : XCTestCase
+
+@end
+
+@implementation PHLScraperTests
+
+- (void)setUp
 {
-    if (self.openers) {
-        return [self.headLiner stringByAppendingString:self.openers];
-    } else {
-        return self.headLiner;
-    }
+    [super setUp];
 }
+
+- (void)tearDown
+{
+    [super tearDown];
+}
+
+- (void)testExample
+{
+    // Tests needed
+}
+
 @end
