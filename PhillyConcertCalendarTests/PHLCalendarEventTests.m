@@ -54,4 +54,11 @@
     XCTAssertEqualObjects(@"Test band / Test opener", [event bands], @"Expected headliner and openers");
 }
 
+- (void)testCalendarEventsBandsNoHeadliners
+{
+    PHLCalendarEvent *event = [[PHLCalendarEvent alloc] init];
+    event.openers = @"Test Band";
+    XCTAssertEqualObjects(@"Test Band", [event bands], @"Bands should equal openers");
+}
+
 @end

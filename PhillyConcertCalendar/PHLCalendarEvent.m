@@ -26,6 +26,9 @@
 - (NSString *)bands
 {
     if (self.openers) {
+        if (!self.headLiner) {
+            return self.openers;
+        }
         return [self.headLiner stringByAppendingString:self.openers];
     } else {
         return self.headLiner;
