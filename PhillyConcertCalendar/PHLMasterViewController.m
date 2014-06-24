@@ -27,6 +27,7 @@
 
 @interface PHLMasterViewController () {
     NSMutableArray *_calendarEvents;
+    NSArray *_searchResults;
 }
 @end
 
@@ -104,14 +105,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _calendarEvents.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return _searchResults.count;
+    } else {
+        return _calendarEvents.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    PHLCalendarEvent *event = _calendarEvents[indexPath.row];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PHLCalendarEvent *event = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        event = _searchResults[indexPath.row];
+    } else {
+        event = _calendarEvents[indexPath.row];
+    }
     cell.textLabel.text = [event bands];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ @ %@", event.showDate, event.venue];
     return cell;
@@ -135,10 +145,36 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        PHLCalendarEvent *object = _calendarEvents[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        NSIndexPath *indexPath = nil;
+        PHLCalendarEvent *event = nil;
+        
+        if (self.searchDisplayController.active) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            event = _searchResults[indexPath.row];
+        } else {
+            indexPath = [self.tableView indexPathForSelectedRow];
+            event = _calendarEvents[indexPath.row];
+        }
+        [[segue destinationViewController] setDetailItem:event];
     }
 }
 
+#pragma mark - Search Controller
+- (void)filterEventsWithInput:(NSString *)searchInput scope:(NSString *)scope
+{
+    NSPredicate *searchPredicate =
+    [NSPredicate predicateWithFormat:@"bands contains[cd] %@ or showDate beginswith %@",
+     searchInput, searchInput];
+    _searchResults = [_calendarEvents filteredArrayUsingPredicate:searchPredicate];
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterEventsWithInput:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles]
+      objectAtIndex:[self.searchDisplayController.searchBar
+                     selectedScopeButtonIndex]]];
+    return YES;
+}
 @end
