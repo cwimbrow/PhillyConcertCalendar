@@ -42,17 +42,14 @@
 
 - (void)configureView
 {
-    
-    
     if (self.detailItem) {
         // TODO: maybe add as part of autoresizing UITextView subclass
         // Removes internal padding so the text lines up with the UILabels
-        self.bandText.textContainer.lineFragmentPadding = 0;
+        //self.bandText.textContainer.lineFragmentPadding = 0;
         self.ticketUrlTextView.textContainer.lineFragmentPadding = 0;
         
+        
         self.bandText.text = [self.detailItem bands];
-        [self.bandText sizeToFit];
-        [self.bandText layoutIfNeeded];
         self.venueLabel.text = self.detailItem.venue;
         self.dateLabel.text = [NSString stringWithFormat:@"Event date: %@",
                                self.detailItem.showDate];

@@ -33,5 +33,5 @@
 @property (weak, nonatomic) IBOutlet UITextView *ticketUrlTextView;
 @property (weak, nonatomic) IBOutlet UILabel *saleDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *showAges;
-@property (weak, nonatomic) IBOutlet UITextView *bandText;
+@property (weak, nonatomic) IBOutlet UILabel *bandText;
 @end
